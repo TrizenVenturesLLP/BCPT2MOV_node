@@ -1,9 +1,12 @@
-FROM node:20-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
 # Copy minimal files required to run Hardhat node
 COPY package*.json hardhat.config.cjs ./
+
+# Verify files were copied (for debugging)
+RUN ls -la
 
 # Use --legacy-peer-deps to tolerate Hardhat peerDependency matrix
 RUN npm ci --only=production --legacy-peer-deps
