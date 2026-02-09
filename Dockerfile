@@ -8,8 +8,9 @@ COPY package*.json hardhat.config.cjs ./
 # Verify files were copied (for debugging)
 RUN ls -la
 
+# Install all dependencies (including dev) so Hardhat is available
 # Use --legacy-peer-deps to tolerate Hardhat peerDependency matrix
-RUN npm ci --only=production --legacy-peer-deps
+RUN npm ci --legacy-peer-deps
 
 EXPOSE 8545
 
